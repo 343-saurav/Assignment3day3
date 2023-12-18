@@ -1,0 +1,33 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.list{
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    background-color: aquamarine;
+}
+#record{
+     display: none; 
+     text-align: center;
+    
+}
+.btn{
+    cursor: pointer;
+    margin: auto;
+}
+.button{
+    margin-top: 5px;
+    text-align: center;
+}
+#count{
+    text-align: center;
+}
+#batchb{
+    text-align: center;
+}
+#studentList{
+    padding: 18px;
+}

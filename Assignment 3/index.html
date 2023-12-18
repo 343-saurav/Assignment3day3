@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="addlist" class="list"><h3 id="count">There are no records Currently</h3>
+    <h3 id="batchb">There are no b002 batch currently</h3>
+    <ul id="studentList">
+       
+    </ul>
+</div>  
+  <div id="record">
+    <form action="">
+        <label for="name">Enter Student Name :</label>
+     <input id="name" type="text"><br>
+     <label for="address">Enter Student Address :</label>
+     <input id="address" type="text"><br>
+     <label for="batch">Enter Student batch :</label>
+     <input id="batch" type="text" onkeydown="addList(event)">
+    </form>
+  </div>
+  <div class="button">
+    <button class="btn" onclick="addRecord()">Add</button>
+    <button class="btn"  onclick="deleteStudent()">Delete</button>
+  </div>
+  <script>
+    const students=[];
+    let c=0;
+    function addRecord(){
+        document.getElementById("record").style.display="block";
+    }
+    function addList(event){
+       if(event.key==='Enter'){
+        console.log("sjdfkghif")
+        const name=document.getElementById('name').value;
+        const address=document.getElementById('address').value;
+        const batch=document.getElementById('batch').value;
+       let student={Name:name,Address:address,Batch:batch};
+       students.push(student) ;
+       if(document.getElementById('batch').value==='B002'){
+        c++;
+       }
+       document.getElementById('count').innerText=`Total number of students is ${students.length}`;
+       displayStudent();
+       }
+        }
+        function displayStudent(){
+            const studentList=document.getElementById('studentList');
+            studentList.innerHTML="";
+            document.getElementById('batchb').innerText=`Total batch B002 is
+            ${c}`;
+            for(let i=0;i<students.length;i++){
+                const li=document.createElement('li');
+                li.innerHTML=students[i].Name + " " + students[i].Address ;
+               studentList.appendChild(li);
+            
+        }
+    }
+    function deleteStudent(){
+       
+        if(students.length==0){
+            alert("There are no records")
+        }
+        else{
+           if(confirm("Do you want to delete")){
+        students.pop()
+        if(document.getElementById('batch').value=='B002'){
+            if(c>0){
+            document.getElementById('batchb').innerText=`Total batch B002 is
+            ${c--}`
+            }
+            else{
+                document.getElementById('batchb').innerText=`There are no B002 batch currently`
+            }
+        }
+        document.getElementById('count').innerText=`Total number of students  is ${students.length}`;
+        displayStudent();
+           }
+        }
+    } 
+    
+    </script>
+</body>
+</html>
